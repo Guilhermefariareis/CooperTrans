@@ -15,7 +15,7 @@ class _NotificationPageState extends State<NotificationPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Avisos'),
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Color(0xFF105848),
         centerTitle: true,
       ),
       body: const NotificationList(),

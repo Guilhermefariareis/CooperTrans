@@ -23,7 +23,7 @@ class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Empresa',
+      title: 'Coopertransc',
       home: Scaffold(
         body: PageView(
           controller: PageViewController,
@@ -42,7 +42,7 @@ class _IndexPageState extends State<IndexPage> {
                 onTap: (index) {
                   PageViewController.jumpToPage(index);
                 },
-                unselectedItemColor: Colors.blue,
+                unselectedItemColor: Colors.green,
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: Icon(Icons.feedback),
@@ -61,7 +61,7 @@ class _IndexPageState extends State<IndexPage> {
                     label: 'Minhas viagens',
                   ),
                 ],
-                selectedItemColor: Colors.blue,
+                selectedItemColor: Color(0xFF105848),
               );
             }),
       ),
