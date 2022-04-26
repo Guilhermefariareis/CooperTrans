@@ -58,7 +58,7 @@ class _TelaViagensState extends State<TelaViagens> {
                 '-> Placa: ${lista[index].placa} -> Modelo: ${lista[index].modelo} -> Cidade Origem: ${lista[index].cidade} / Data: ${lista[index].data}',
                 style: const TextStyle(fontSize: 18),
               ),
-              //ícone lado esquerdo
+              //ícone lado esquerd
               // leading: const Icon(Icons.),
               //ícone lado direito
               trailing: const Icon(Icons.arrow_right),
