@@ -8,7 +8,6 @@ class NotificationDetails extends StatelessWidget {
 
   const NotificationDetails(this.notification, {Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,4 +72,5 @@ class NotificationDetails extends StatelessWidget {
       ),
     );
   }
+  //teste
 }
