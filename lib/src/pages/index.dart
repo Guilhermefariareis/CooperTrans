@@ -2,7 +2,7 @@
 
 import 'package:app_coopertrans/src/pages/viagens/index_viagens.dart';
 import 'package:flutter/material.dart';
-
+import 'fila/index_page.dart';
 import 'notification/index_page.dart';
 
 class IndexPage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _IndexPageState extends State<IndexPage> {
         controller: PageViewController,
         children: [
           const NotificationPage(),
-          Container(),
+          const FilaPage(),
           const TelaViagens(),
           Container(),
         ],
@@ -49,7 +49,7 @@ class _IndexPageState extends State<IndexPage> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.list),
-                  label: 'Vez',
+                  label: 'Fila',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.local_shipping),
