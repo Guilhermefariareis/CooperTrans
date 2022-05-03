@@ -4,14 +4,14 @@ import 'package:app_coopertrans/src/models/viagem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TelaViagens extends StatefulWidget {
-  const TelaViagens({Key? key}) : super(key: key);
+class TelaAvisos extends StatefulWidget {
+  const TelaAvisos({Key? key}) : super(key: key);
 
   @override
-  State<TelaViagens> createState() => _TelaViagensState();
+  State<TelaAvisos> createState() => _TelaAvisosState();
 }
 
-class _TelaViagensState extends State<TelaViagens> {
+class _TelaAvisosState extends State<TelaAvisos> {
   //lista dinâmica de paises
   List<Viagem> lista = [];
 
@@ -19,7 +19,7 @@ class _TelaViagensState extends State<TelaViagens> {
   // CARREGAR JSON
   // Leitura de um arquivo Json
   carregarJson() async {
-    final String f = await rootBundle.loadString('lib/data/viagens.json');
+    final String f = await rootBundle.loadString('lib/data/avisos.json');
     final dynamic d = await json.decode(f);
     setState(() {
       d.forEach((item) {

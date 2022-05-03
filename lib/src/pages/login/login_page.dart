@@ -4,6 +4,7 @@ import 'package:app_coopertrans/shared/themes/app_colors.dart';
 import 'package:app_coopertrans/shared/themes/app_images.dart';
 import 'package:app_coopertrans/shared/themes/app_text_styles.dart';
 import 'package:app_coopertrans/shared/widgets/social_login/social_login_button.dart';
+import 'package:app_coopertrans/shared/widgets/social_login/social_cadastro_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -60,6 +61,15 @@ class _LoginPageState extends State<LoginPage> {
                     padding:
                         const EdgeInsets.only(left: 40, right: 40, top: 40),
                     child: SocialLoginButton(
+                      onTap: () {
+                        controller.googleSignIn(context);
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 40, right: 40, top: 40),
+                    child: SocialCadastroButton(
                       onTap: () {
                         controller.googleSignIn(context);
                       },

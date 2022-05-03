@@ -1,0 +1,39 @@
+[
+    {
+            "id": {
+                "id": "01"
+            },
+            "user_id": {
+                "user_id": "01234"
+            },
+            "data_publicacao": {
+                "data_publicacao": "01/01/2020"
+            },
+            "titulo": {
+                "titulo": "AVISO N1 TESTE"
+            },
+    "mensagem": {
+                "mensagem": "Divisa entre MG / SP FECHADAS"
+            }
+        },
+{
+
+
+    "id": {
+        "id": "02"
+    },
+    "user_id": {
+        "user_id": "06789"
+    },
+    "data_publicacao": {
+        "data_publicacao": "00/00/2000"
+    },
+    "titulo": {
+        "titulo": "AVISO N2 TESTE"
+    },
+"mensagem": {
+        "mensagem": "Divisa entre RJ / SP FECHADAS"
+    }
+}
+
+]
