@@ -18,10 +18,7 @@ class Viagem {
       json["placa"]["plc"],
       json["modelo"]["mdl"],
       json["data"]["dataM"],
-      //    json["data"]["dataV"],
-      //     json["data"]["diferenca"],
       json["cidade"]["atual"],
-      //     json["cidade"]["destino"],
       json["distancia"]["km"],
     );
   }
