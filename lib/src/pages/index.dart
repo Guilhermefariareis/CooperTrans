@@ -4,6 +4,7 @@ import 'package:app_coopertrans/src/pages/viagens/index_viagens.dart';
 import 'package:flutter/material.dart';
 import 'fila/index_page.dart';
 import 'notification/index_page.dart';
+import 'avisos/index_avisos.dart';
 import 'minhas_viagens/minha_fila.dart';
 
 class IndexPage extends StatefulWidget {
@@ -28,7 +29,7 @@ class _IndexPageState extends State<IndexPage> {
       body: PageView(
         controller: PageViewController,
         children: const [
-          NotificationPage(),
+          TelaAvisos(),
           FilaPage(),
           TelaViagens(),
           MinhaFila(),

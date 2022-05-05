@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:app_coopertrans/src/models/viagem.dart';
+import 'package:app_coopertrans/src/models/avisos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,8 +12,7 @@ class TelaAvisos extends StatefulWidget {
 
 class _TelaAvisosState extends State<TelaAvisos> {
   //lista dinâmica de paises
-  List<Viagem> lista = [];
-
+  List<Avisos> lista = [];
   //
   // CARREGAR JSON
   // Leitura de um arquivo Json
@@ -23,7 +21,7 @@ class _TelaAvisosState extends State<TelaAvisos> {
     final dynamic d = await json.decode(f);
     setState(() {
       d.forEach((item) {
-        lista.add(Viagem.fromJson(item));
+        lista.add(Avisos.fromJson(item));
       });
     });
   }
@@ -40,7 +38,7 @@ class _TelaAvisosState extends State<TelaAvisos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Viagens'),
+        title: const Text('Avisos'),
         backgroundColor: Color.fromARGB(221, 0, 78, 20),
       ),
       backgroundColor: Colors.white30,
@@ -50,18 +48,38 @@ class _TelaAvisosState extends State<TelaAvisos> {
           itemCount: lista.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(
-                '(' + lista[index].status + ') ' + lista[index].nome,
-                style: const TextStyle(fontSize: 20),
+              leading: const Icon(
+                Icons.warning,
+                color: Color(0xFFFF0000),
+                size: 40,
               ),
+              title: Text(
+                lista[index].titulo,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 30,
+                  fontFamily: 'Lexend Deca',
+                  color: Color.fromARGB(255, 255, 17, 0),
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+
               subtitle: Text(
-                '-> Placa: ${lista[index].placa} -> Modelo: ${lista[index].modelo} -> Cidade Origem: ${lista[index].cidade} / Data: ${lista[index].data}',
-                style: const TextStyle(fontSize: 18),
+                ' ${lista[index].mensagem}',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
               ),
               //ícone lado esquerd
               // leading: const Icon(Icons.),
               //ícone lado direito
-              trailing: const Icon(Icons.arrow_right),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                color: Color(0xFF303030),
+                size: 20,
+              ),
               //comportamento
               onTap: () {
                 //Navegar para TelaDetalhes passando como argumento
