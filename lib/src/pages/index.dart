@@ -1,11 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:app_coopertrans/src/pages/viagens/index_viagens.dart';
+import 'package:app_coopertrans/src/pages/viagens/viagens_page.dart';
 import 'package:flutter/material.dart';
 import 'fila/index_page.dart';
-import 'notification/index_page.dart';
 import 'avisos/index_avisos.dart';
 import 'minhas_viagens/minha_fila.dart';
+import 'viagens/viagens_page.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _IndexPageState extends State<IndexPage> {
         children: const [
           TelaAvisos(),
           FilaPage(),
-          TelaViagens(),
+          ViagemPage(),
           MinhaFila(),
         ],
       ),

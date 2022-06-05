@@ -1,85 +1,86 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:app_coopertrans/src/pages/login/login_controller.dart';
-import 'package:app_coopertrans/shared/themes/app_colors.dart';
-import 'package:app_coopertrans/shared/themes/app_images.dart';
-import 'package:app_coopertrans/shared/themes/app_text_styles.dart';
-import 'package:app_coopertrans/shared/widgets/social_login/social_login_button.dart';
-import 'package:app_coopertrans/shared/widgets/social_login/social_cadastro_button.dart';
+import 'package:http/http.dart' as http;
+
+import '../api.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final controller = LoginController();
+  var USUARIO = '040256088472';
+  var SENHA = '040256088472';
+
+  Future<Map<String, dynamic>> login(usr, pwd) async {
+    var resposta = await http.post(
+      Uri.parse(Api.URL + 'login'),
+      headers: {
+        "Accept": "application/json",
+      },
+      body: {
+        "username": usr,
+        "password": pwd,
+      },
+    );
+    print(resposta.body.toString());
+    return json.decode(resposta.body);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Stack(
-          children: [
-            Container(
-              width: size.width,
-              height: size.height * 0.36,
-              color: AppColors.primary,
-            ),
-            Positioned(
-                top: 40,
-                left: 0,
-                right: 0,
-                child: Image.asset(
-                  AppImages.person,
-                  width: 208,
-                  height: 300,
-                )),
-            Positioned(
-              bottom: size.height * 0.05,
-              left: 0,
-              right: 0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(AppImages.logomini),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 30, left: 70, right: 70),
-                    child: Text(
-                      "Cooperativa dos transportadores Autônomos",
-                      textAlign: TextAlign.center,
-                      style: TextStyles.titleHome,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 40, right: 40, top: 40),
-                    child: SocialLoginButton(
-                      onTap: () {
-                        controller.googleSignIn(context);
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 40, right: 40, top: 40),
-                    child: SocialCadastroButton(
-                      onTap: () {
-                        controller.googleSignIn(context);
-                      },
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+      body: FutureBuilder(
+        future: login(USUARIO, SENHA),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            //
+            // RETORNO DA CHAMADA A API
+            //
+            var dados = snapshot.data as Map<String, dynamic>;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('ID: ${dados['id'].toString()}'),
+                Text('Nome: ${dados['nome'].toString()}'),
+                Text('Username: ${dados['username'].toString()}'),
+                Text(
+                  'Token: ${dados['token'].toString()}',
+                  style: TextStyle(fontSize: 10),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      'vez',
+                      arguments: dados['token'],
+                    );
+                  },
+                  child: const Text('Vez'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/viagens',
+                      arguments: dados['token'],
+                    );
+                  },
+                  child: const Text('Viagens'),
+                ),
+              ],
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }
