@@ -109,14 +109,6 @@ class _ViagemPage extends State<ViagemPage> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.98, -0.54),
-                              child: Icon(
-                                Icons.fire_truck_rounded,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Align(
                               alignment: AlignmentDirectional(-0.97, -0.30),
                               child: Text(
                                 '${dados[index].cidadeOrigem} - ${dados[index].estadoOrigem} ',

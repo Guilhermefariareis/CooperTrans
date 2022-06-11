@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
-                      'vez',
+                      '/vez',
                       arguments: dados['token'],
                     );
                   },

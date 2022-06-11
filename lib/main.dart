@@ -1,3 +1,4 @@
+import 'package:app_coopertrans/src/pages/vez/vez_page.dart';
 import 'package:flutter/material.dart';
 
 import 'src/pages/index.dart';
@@ -13,6 +14,7 @@ void main() {
       "/splash": (context) => const SplashPage(),
       "/home": (context) => const IndexPage(),
       "/login": (context) => const LoginPage(),
+      '/vez': (context) => const VezPage(),
       '/viagens': (context) => const ViagemPage(),
     },
   ));
