@@ -17,7 +17,7 @@ class ViagemPage extends StatefulWidget {
 
 class _ViagemPage extends State<ViagemPage> {
   //LISTA DINÂMICA de Objetos da classe Vez
-  var token;
+  var token = '252|uxVvksrQtvMnhzwobzG1K2KmTO4GJpapCWjX8ntz';
 
   getViagens() async {
     List<Viagem> lista = [];
@@ -42,9 +42,12 @@ class _ViagemPage extends State<ViagemPage> {
 
   @override
   Widget build(BuildContext context) {
-    token = ModalRoute.of(context)!.settings.arguments;
+    //token = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
-      appBar: AppBar(title: const Text('Viagens')),
+      appBar: AppBar(
+        title: const Text('Viagens'),
+        backgroundColor: const Color(0xFF105848),
+      ),
       body: Container(
         child: FutureBuilder(
           future: getViagens(),
@@ -111,7 +114,7 @@ class _ViagemPage extends State<ViagemPage> {
                             Align(
                               alignment: AlignmentDirectional(-0.98, -0.54),
                               child: Icon(
-                                Icons.fire_truck_rounded,
+                                Icons.beach_access,
                                 color: Colors.black,
                                 size: 24,
                               ),

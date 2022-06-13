@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:app_coopertrans/shared/themes/app_colors.dart';
-import 'package:app_coopertrans/shared/themes/app_images.dart';
 import 'package:app_coopertrans/shared/themes/app_text_styles.dart';
 
 class SocialLoginButton extends StatelessWidget {
@@ -14,7 +13,7 @@ class SocialLoginButton extends StatelessWidget {
         Navigator.pushNamed(context, "/home");
       },
       child: Container(
-        height: 56,
+        height: 30,
         decoration: BoxDecoration(
             color: AppColors.shape,
             borderRadius: BorderRadius.circular(5),
@@ -26,20 +25,9 @@ class SocialLoginButton extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-                flex: 1,
+                flex: 0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(AppImages.google),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    Container(
-                      height: 56,
-                      width: 1,
-                      color: AppColors.stroke,
-                    )
-                  ],
                 )),
             Expanded(
               flex: 4,
@@ -47,7 +35,7 @@ class SocialLoginButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Entrar com Google",
+                    "Entrar",
                     style: TextStyles.buttonGray,
                   ),
                 ],

@@ -1,94 +1,90 @@
 import 'dart:convert';
-import 'package:app_coopertrans/src/models/avisos.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class TelaAvisos extends StatefulWidget {
-  const TelaAvisos({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import '../../models/avisos.dart';
+import '../api.dart';
+
+class AvisosPage extends StatefulWidget {
+  const AvisosPage({Key? key}) : super(key: key);
 
   @override
-  State<TelaAvisos> createState() => _TelaAvisosState();
+  State<AvisosPage> createState() => _AvisosPageState();
 }
 
-class _TelaAvisosState extends State<TelaAvisos> {
-  //lista dinâmica de paises
-  List<Avisos> lista = [];
-  //
-  // CARREGAR JSON
-  // Leitura de um arquivo Json
-  carregarJson() async {
-    final String f = await rootBundle.loadString('lib/data/avisos.json');
-    final dynamic d = await json.decode(f);
-    setState(() {
-      d.forEach((item) {
-        lista.add(Avisos.fromJson(item));
-      });
-    });
-  }
+class _AvisosPageState extends State<AvisosPage> {
+  //LISTA DINÂMICA de Objetos da classe Avisos
+  var token = '252|uxVvksrQtvMnhzwobzG1K2KmTO4GJpapCWjX8ntz';
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
-      await carregarJson();
-    });
+  Future<List<Avisos>> getAvisos() async {
+    List<Avisos> lista = [];
+    try {
+      var resposta = await http.get(
+        Uri.parse(Api.URL + 'avisos'),
+        headers: {
+          "Accept": "application/json",
+          'Authorization': 'Bearer $token',
+        },
+      );
+      var dados = json.decode(resposta.body.toString());
+      for (var item in dados) {
+        lista.add(Avisos.fromJson(item));
+      }
+    } catch (erro) {
+      print(erro.toString());
+    }
+    return lista;
   }
 
   @override
   Widget build(BuildContext context) {
+    //token = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Avisos'),
-        backgroundColor: Color.fromARGB(221, 0, 78, 20),
+        backgroundColor: const Color(0xFF105848),
       ),
-      backgroundColor: Colors.white30,
-      body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: ListView.builder(
-          itemCount: lista.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: const Icon(
-                Icons.warning,
-                color: Color(0xFFFF0000),
-                size: 40,
-              ),
-              title: Text(
-                lista[index].titulo,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 30,
-                  fontFamily: 'Lexend Deca',
-                  color: Color.fromARGB(255, 255, 17, 0),
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-
-              subtitle: Text(
-                ' ${lista[index].mensagem}',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
-              ),
-              //ícone lado esquerd
-              // leading: const Icon(Icons.),
-              //ícone lado direito
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                color: Color(0xFF303030),
-                size: 20,
-              ),
-              //comportamento
-              onTap: () {
-                //Navegar para TelaDetalhes passando como argumento
-                //o Pais selecionado pelo usuário
-                Navigator.pushNamed(context, 't2', arguments: lista[index]);
+      body: FutureBuilder(
+        future: getAvisos(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            var dados = snapshot.data as List<Avisos>;
+            return ListView.builder(
+              itemCount: dados.length,
+              itemBuilder: (context, index) {
+                return SafeArea(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFEEEEEE),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 247, 246, 246),
+                        )
+                      ],
+                    ),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: Color.fromARGB(255, 218, 218, 218),
+                      child: Stack(
+                        children: [
+                          ListTile(
+                            title: Text(
+                                '${dados[index].id} - ${dados[index].publicar_ate} - ${dados[index].created_at}'),
+                            subtitle: Text(
+                                '${dados[index].updated_at} - ${dados[index].mensagem}'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               },
             );
-          },
-        ),
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }

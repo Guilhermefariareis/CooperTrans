@@ -15,7 +15,7 @@ class VezPage extends StatefulWidget {
 
 class _VezPageState extends State<VezPage> {
   //LISTA DINÂMICA de Objetos da classe Vez
-  var token;
+  var token = '252|uxVvksrQtvMnhzwobzG1K2KmTO4GJpapCWjX8ntz';
 
   Future<List<Vez>> getVez() async {
     List<Vez> lista = [];
@@ -39,9 +39,12 @@ class _VezPageState extends State<VezPage> {
 
   @override
   Widget build(BuildContext context) {
-    token = ModalRoute.of(context)!.settings.arguments;
+    //token = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
-      appBar: AppBar(title: const Text('Vez')),
+      appBar: AppBar(
+        title: const Text('Vez'),
+        backgroundColor: const Color(0xFF105848),
+      ),
       body: FutureBuilder(
         future: getVez(),
         builder: (context, snapshot) {

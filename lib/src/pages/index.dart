@@ -2,9 +2,8 @@
 
 import 'package:app_coopertrans/src/pages/viagens/viagens_page.dart';
 import 'package:flutter/material.dart';
-import 'fila/index_page.dart';
 import 'avisos/index_avisos.dart';
-import 'minhas_viagens/minha_fila.dart';
+import 'vez/vez_page.dart';
 import 'viagens/viagens_page.dart';
 
 class IndexPage extends StatefulWidget {
@@ -29,10 +28,10 @@ class _IndexPageState extends State<IndexPage> {
       body: PageView(
         controller: PageViewController,
         children: const [
-          TelaAvisos(),
-          FilaPage(),
+          AvisosPage(),
+          VezPage(),
           ViagemPage(),
-          MinhaFila(),
+          AvisosPage(),
         ],
       ),
       bottomNavigationBar: AnimatedBuilder(

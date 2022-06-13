@@ -1,23 +1,33 @@
 // ignore_for_file: non_constant_identifier_names
 
 class Avisos {
-  String id;
-  String user_id;
-  String data_publicacao;
-  String titulo;
-  String mensagem;
+  int? id;
+  String? mensagem;
+  String? publicar_ate;
+  String? created_at;
+  String? updated_at;
 
-  Avisos(
-      this.id, this.user_id, this.data_publicacao, this.titulo, this.mensagem);
+  Avisos(this.id, this.mensagem, this.publicar_ate, this.created_at,
+      this.updated_at);
 
   //Transformar os dados no formato JSON para um objeto
   factory Avisos.fromJson(Map<String, dynamic> json) {
     return Avisos(
-      json["id"]["id"],
-      json["user_id"]["user_id"],
-      json["data_publicacao"]["data_publicacao"],
-      json["titulo"]["titulo"],
-      json["mensagem"]["mensagem"],
+      json["id"] ?? '',
+      json["mensagem"] ?? '',
+      json["publicar_ate"] ?? '',
+      json["created_at"] ?? '',
+      json["updated_at"] ?? '',
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var data = <String, dynamic>{};
+    data['id'] = id;
+    data['mensagem'] = mensagem;
+    data['publicar_ate'] = publicar_ate;
+    data['created_at'] = created_at;
+    data['updated_at'] = updated_at;
+    return data;
   }
 }
