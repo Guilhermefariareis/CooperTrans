@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'avisos/index_avisos.dart';
 import 'vez/vez_page.dart';
 import 'viagens/viagens_page.dart';
+import 'minhas_viagens/minha_viagens.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _IndexPageState extends State<IndexPage> {
           AvisosPage(),
           VezPage(),
           ViagemPage(),
-          AvisosPage(),
+          MinhasPage(),
         ],
       ),
       bottomNavigationBar: AnimatedBuilder(

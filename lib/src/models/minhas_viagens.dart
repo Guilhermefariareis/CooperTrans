@@ -1,4 +1,6 @@
-class minhasviagens {
+// ignore_for_file: non_constant_identifier_names
+
+class Minhas {
   String? id;
   String? id_cooperado;
   String? id_veiculo;
@@ -22,7 +24,7 @@ class minhasviagens {
   String? marca;
   String? modelo;
 
-  minhasviagens(
+  Minhas(
     this.id,
     this.id_cooperado,
     this.id_veiculo,
@@ -48,8 +50,8 @@ class minhasviagens {
   );
 
   //Transformar os dados no formato JSON para um objeto
-  factory minhasviagens.fromJson(Map<String, dynamic> json) {
-    return minhasviagens(
+  factory Minhas.fromJson(Map<String, dynamic> json) {
+    return Minhas(
       json["id"] ?? '',
       json["id_cooperado"] ?? '',
       json["id_veiculo"] ?? '',
