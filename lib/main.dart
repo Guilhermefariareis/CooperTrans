@@ -9,7 +9,7 @@ import 'src/pages/avisos/index_avisos.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: "/login",
+    initialRoute: "/splash",
     title: 'Coopertransc',
     routes: {
       "/splash": (context) => const SplashPage(),

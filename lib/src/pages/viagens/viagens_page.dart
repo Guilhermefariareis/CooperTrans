@@ -114,7 +114,7 @@ class _ViagemPage extends State<ViagemPage> {
                             Align(
                               alignment: AlignmentDirectional(-0.98, -0.54),
                               child: Icon(
-                                Icons.beach_access,
+                                Icons.drive_eta_sharp,
                                 color: Colors.black,
                                 size: 24,
                               ),

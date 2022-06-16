@@ -71,35 +71,42 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(AppImages.logomini),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 30, left: 70, right: 70),
-                    child: Text(
-                      "Cooperativa dos transportadores Autônomos",
-                      textAlign: TextAlign.center,
-                      style: TextStyles.titleHome,
+                      padding:
+                          const EdgeInsets.only(top: 30, left: 70, right: 70),
+                      child: Image.asset(AppImages.logomini)),
+                  //Padding(
+                  //padding:
+                  // const EdgeInsets.only(top: 30, left: 70, right: 70),
+                  //child: Text(
+                  //  "Cooperativa dos transportadores Autônomos",
+                  //  textAlign: TextAlign.center,
+                  //  style: TextStyles.titleHome,
+                  //),
+                  //),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, left: 70, right: 70),
+                    child: TextField(
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'CNPJ',
+                      ),
                     ),
                   ),
-                  TextField(
-                      autofocus: true,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(color: Color(0xFF105848), fontSize: 20),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8, left: 70, right: 70),
+                    child: TextField(
+                      obscureText: true,
                       decoration: InputDecoration(
-                        labelText: "Login do usuário",
-                        labelStyle: TextStyle(color: Colors.black),
-                      )),
-                  TextField(
-                      autofocus: true,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(color: Color(0xFF105848), fontSize: 20),
-                      decoration: InputDecoration(
-                        labelText: "Senha do usuário",
-                        labelStyle: TextStyle(color: Colors.black),
-                      )),
+                        border: OutlineInputBorder(),
+                        labelText: 'Senha',
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 40, right: 40, top: 40),
+                        const EdgeInsets.only(left: 100, right: 100, top: 5),
                     child: SocialLoginButton(
                       onTap: () {
                         controller.googleSignIn(context);

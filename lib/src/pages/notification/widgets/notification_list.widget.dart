@@ -66,18 +66,18 @@ class NotificationList extends StatelessWidget {
                           child: Card(
                             child: Container(
                               margin: const EdgeInsets.all(10),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(item.titulo),
-                                  ),
-                                  Text(item.data_publicacao),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  const Icon(Icons.keyboard_arrow_right_sharp)
-                                ],
-                              ),
+                              //child: Row(
+                              //children: [
+                              //Expanded(
+                              //  child: Text(item.id),
+                              //),
+                              //Text(item.data_publicacao),
+                              //const SizedBox(
+                              //  width: 15,
+                              // ),
+                              //const Icon(Icons.keyboard_arrow_right_sharp)
+                              //],
+                              //),
                             ),
                           ),
                         ),

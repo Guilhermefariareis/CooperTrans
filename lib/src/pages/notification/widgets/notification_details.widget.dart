@@ -8,7 +8,6 @@ class NotificationDetails extends StatelessWidget {
 
   const NotificationDetails(this.notification, {Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,21 +52,21 @@ class NotificationDetails extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(30),
         child: Column(children: [
-          Text(
-            notification.titulo,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.amberAccent,
-              fontSize: 30,
-            ),
-          ),
+          //Text(
+          //  notification.id,
+          //  style: const TextStyle(
+          //    fontWeight: FontWeight.bold,
+          //   color: Colors.amberAccent,
+          //   fontSize: 30,
+          // ),
+          //),
           const SizedBox(
             height: 10,
           ),
-          Text(notification.data_publicacao),
-          const SizedBox(
-            height: 10,
-          ),
+          //Text(notification.data),
+          //const SizedBox(
+          //  height: 10,
+          //),
           Html(data: messageHtml)
         ]),
       ),

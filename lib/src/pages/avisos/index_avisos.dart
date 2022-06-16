@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_html/flutter_html.dart';
-
 import '../../models/avisos.dart';
 import '../api.dart';
 
@@ -56,7 +54,7 @@ class _AvisosPageState extends State<AvisosPage> {
               itemBuilder: (context, index) {
                 return SafeArea(
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFEEEEEE),
                       boxShadow: [
                         BoxShadow(
@@ -66,7 +64,7 @@ class _AvisosPageState extends State<AvisosPage> {
                     ),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: const Color.fromARGB(255, 218, 218, 218),
+                      color: Color.fromARGB(255, 218, 218, 218),
                       child: Stack(
                         children: [
                           ListTile(
