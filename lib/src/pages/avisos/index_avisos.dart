@@ -54,7 +54,7 @@ class _AvisosPageState extends State<AvisosPage> {
               itemBuilder: (context, index) {
                 return SafeArea(
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFEEEEEE),
                       boxShadow: [
                         BoxShadow(
@@ -68,10 +68,8 @@ class _AvisosPageState extends State<AvisosPage> {
                       child: Stack(
                         children: [
                           ListTile(
-                            title: Text(
-                                '${dados[index].id} - ${dados[index].publicar_ate} - ${dados[index].created_at}'),
-                            subtitle: Text(
-                                '${dados[index].updated_at} - ${dados[index].mensagem}'),
+                            title: Text('${dados[index].id}'),
+                            subtitle: Text('${dados[index].mensagem}'),
                           ),
                         ],
                       ),

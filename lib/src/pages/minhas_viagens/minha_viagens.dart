@@ -57,7 +57,7 @@ class _MinhasPageState extends State<MinhasPage> {
               itemBuilder: (context, index) {
                 return SafeArea(
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFEEEEEE),
                       boxShadow: [
                         BoxShadow(
@@ -67,7 +67,7 @@ class _MinhasPageState extends State<MinhasPage> {
                     ),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: Color.fromARGB(255, 218, 218, 218),
+                      color: const Color.fromARGB(255, 218, 218, 218),
                       child: Stack(
                         children: [
                           ListTile(
